@@ -47,7 +47,10 @@
 			navigation              :   1,		//Slideshow controls on/off
 			thumbnail_navigation    :   0,		//Thumbnail navigation
 			slide_counter           :   1,		//Display slide numbers
-			slide_captions          :   1		//Slide caption (Pull from "title" in slides array)
+			slide_captions          :   1,		//Slide caption (Pull from "title" in slides array)
+
+      on_pre_next_slide: function () { },
+      on_post_next_slide: function () { }
 			
     	};
 		
@@ -532,6 +535,7 @@
 		
 		//Next slide
 		function nextslide() {
+      settings.on_pre_next_slide();
 			
 			if(inAnimation) return false;		//Abort if currently animating
 				else inAnimation = true;		//Otherwise set animation marker
@@ -624,6 +628,7 @@
 	    			break;
 	    	};
   
+        settings.on_post_next_slide();
 		}
 		
 		
